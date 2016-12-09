@@ -1,0 +1,20 @@
+{% extends 'base-all.html' %}
+
+{% block all_content %}
+
+<div class="major-content">
+    <!--页面信息-->
+    <div class="home-page">
+        {% block major_content %}
+        {% endblock %}
+    </div>
+    <!--页尾信息-->
+    <div id="footer">
+        <ul>
+            <li id="tail-left">Powered by <a href="http://v3.bootcss.com/">Bootstrap</a></li>
+            <li id="tail-right"><a href="http://www.miitbeian.gov.cn">粤ICP备16049607号-1</a> © 2016 mblog</li>
+        </ul>
+    </div>
+</div>
+
+{% endblock %}

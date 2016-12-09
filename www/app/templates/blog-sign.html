@@ -1,0 +1,151 @@
+{% extends 'base-content.html' %}
+
+{% block title %} 登录/注册 {% endblock %}
+
+{% block beforehead %}
+<link rel="stylesheet" href="/static/css/sign.css">
+{% endblock %}
+
+
+{% block major_content %}
+
+<div class="container">
+    <div class="login-page">
+        <div class="logo"></div>
+        <h4 class="sign-type">
+            {% if sign_type == 'signup' %}
+        <span>
+            <a class="signin-btn" onclick="show_signin();"
+               style="color: #b1b1b1;">登录</a>
+            <b>·</b>
+            <a class="signup-btn" onclick="show_signup();"
+               style="color: #3f3f3f;">注册</a>
+        </span>
+            {% elif sign_type == 'signin' %}
+        <span>
+            <a class="signin-btn" onclick="show_signin();"
+               style="color: #3f3f3f;">登录</a>
+            <b>·</b>
+            <a class="signup-btn" onclick="show_signup();"
+               style="color: #b1b1b1;">注册</a>
+        </span>
+            {% endif %}
+        </h4>
+        <div class="sign-in">
+            <form class="center-block" id="vm-sign-in" role="form" v-on:submit.prevent="submit">
+                <div class="alert alert-danger" role="alert" hidden="hidden">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <span class="sr-only">Error:</span>
+                    <span v-text="message"></span>
+                </div>
+                <div class="form-group form-group-lg">
+                    <span class="add-on form-control"><i class="fa fa-user"></i></span>
+                    <input class="add-input form-control" id="signin-email" name="email" type="email"
+                           placeholder="请输入邮箱" v-model="signin_email">
+                </div>
+                <div class="form-group form-group-lg">
+                    <span class="add-on form-control"><i class="fa fa-unlock-alt"></i></span>
+                    <input class="add-input form-control" id="signin-password" name="password" type="password"
+                           placeholder="请输入密码" v-model="password">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary btn-lg btn-block">登 录</button>
+                </div>
+            </form>
+            <div class="control-group text-left">
+                <!--<div class="icheckbox_minimal checked" style="position: relative;"><input type="checkbox"-->
+                <!--name="sign_in[remember_me]"-->
+                <!--id="sign_in_remember_me"-->
+                <!--value="true"-->
+                <!--checked="checked"-->
+                <!--style="position: absolute; opacity: 0;">-->
+                <!--<ins class="iCheck-helper"-->
+                <!--style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins>-->
+                <!--</div>-->
+                <!--记住我-->
+                <!--<a href="/users/password/new">忘记密码</a>-->
+            </div><!--记住我与忘记密码, 暂时不支持-->
+        </div>
+
+
+        <div class="sign-up" style="display: none;">
+            <form class="center-block" id="vm-sign-up" role="form" v-on:submit.prevent="submit">
+                <div class="alert alert-danger" role="alert" hidden="hidden">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <span class="sr-only">Error:</span>
+                    <span v-text="message"></span>
+                </div>
+                <div class="form-group form-group-lg">
+                    <span class="add-on form-control"><i class="fa fa-user"></i></span>
+                    <input class="add-input form-control" id="signup-name" name="name" type="text" placeholder="请输入名字"
+                           v-model="name">
+                </div>
+
+                <div class="form-group form-group-lg">
+                    <span class="add-on form-control"><i class="fa fa-user"></i></span>
+                    <input class="add-input form-control" id="signup-email" name="email" type="email"
+                           placeholder="请输入邮箱" v-model="signup_email">
+                </div>
+                <div class="form-group form-group-lg">
+                    <span class="add-on form-control"><i class="fa fa-unlock-alt"></i></span>
+                    <input class="add-input form-control" id="signup-password1" name="password1" type="password"
+                           placeholder="请输入密码" v-model="password1">
+                </div>
+                <div class="form-group form-group-lg">
+                    <span class="add-on form-control"><i class="fa fa-unlock-alt"></i></span>
+                    <input class="add-input form-control" id="signup-password2" name="password2" type="password"
+                           placeholder="请重复密码" v-model="password2">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary btn-lg btn-block">注 册</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="login-sns">
+            <p>暂不支持以下方式直接登录</p>
+            <ul class="login-sns">
+                <li class="weibo">
+                    <!--/users/auth/weibo-->
+                    <a href="javascript:void(0);"><i class="fa fa-weibo"></i></a>
+                </li>
+                <li class="qq">
+                    <!--/users/auth/qq_connect-->
+                    <a href="javascript:void(0);"><i class="fa fa-qq"></i></a>
+                </li>
+                <li class="google">
+                    <!--/users/auth/google_oauth2-->
+                    <a href="javascript:void(0);"><i class="fa fa-google-plus"></i></a>
+                </li>
+                <li class="wechat">
+                    <!--/users/auth/wechat-->
+                    <a href="javascript:void(0);"><i class="fa fa-wechat"></i></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script src="/static/js/cdls/vue.min.js"></script>
+<script src="/static/js/cdls/sha1.min.js"></script>
+<script src="/static/js/sign.js"></script>
+
+<script type="text/javascript">
+    function show_signin() {
+        $('.sign-up').css('display', 'none');
+        $('.sign-in').css('display', 'block');
+        $('.sign-type span .signin-btn').css('color', '#3f3f3f');
+        $('.sign-type span .signup-btn').css('color', '#b1b1b1');
+    }
+
+    function show_signup() {
+        $('.sign-in').css('display', 'none');
+        $('.sign-up').css('display', 'block');
+        $('.sign-type span .signup-btn').css('color', '#3f3f3f');
+        $('.sign-type span .signin-btn').css('color', '#b1b1b1');
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,334 @@
+@charset "UTF-8";
+
+body {
+    background-color: #ffffff;
+    width: 100%;
+    margin: 0; padding: 0;
+}
+
+i, cite, em, var, address, dfn {
+    font-style: italic;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    border: 0;
+}
+
+a {
+    color: #555555;
+    text-decoration: none;
+}
+
+ul {
+    display: block;
+    list-style-type: disc;
+    -webkit-margin-before: 0px;
+    -webkit-margin-after: 0px;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 0px;
+}
+
+.all-section {
+    width: 100%;
+}
+
+.no-login {
+    display: inline-block;
+    padding: 5px;
+    margin: 5px;
+}
+
+.no-login div {
+    margin-right: 5px;
+}
+
+.user-nav {
+    position: fixed;
+    top: 10px;
+    right: 0;
+    margin-bottom: 0;
+    z-index: 1010;
+    list-style: none;
+}
+
+.top-nav {
+    position: absolute;
+    margin-left: 28.575%;
+    width: 100%;
+    background-color: blue;
+}
+
+.top-view div {
+    display: inline-block;
+}
+
+.blog-index {
+    position: fixed;
+    width: 25%;
+    top: 0;
+    left: 3.575%;
+    bottom: 0;
+    margin-left: 0;
+    background-image: url(../img/5cm.gif);
+    background-position: center center;
+    background-size: cover;
+}
+
+.home-logo {
+    background: #563d7c;
+    padding: 0;
+    margin: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.home-logo a {
+    display: table-cell;
+    width: 3.575%;
+    height: 45px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+/*.ico {*/
+    /*display: inline-block;*/
+    /*width: 3.575%;*/
+    /*height: 45px;*/
+/*}*/
+
+.nav-view li {
+}
+
+.ico-edit a {
+    display: table-cell;
+    margin: 0;
+    padding: 0;
+    width: 3.575%;
+    height: 45px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.ico-cog a {
+    display: table-cell;
+    margin: 0;
+    padding: 0;
+    /*导航栏宽度*/
+    width: 3.575%;
+    height: 45px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.main-view {
+    width: 100%;
+}
+
+.main-content {
+    width: 59%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    max-width: 1000px;
+}
+
+.guide {
+    position: fixed;
+    /*导航栏宽度*/
+    width: 3.575%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #222;
+    border-color: #080808;
+}
+
+.fa {
+    display: inline-block;
+    /*font: normal normal normal 14px/1 FontAwesome;*/
+    /*font-size: inherit;*/
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transform: translate(0, 0);
+}
+
+.fixed-btn {
+    position: fixed;
+    right: 2%;
+    bottom: 12%;
+    width: 40px;
+    border: 1px solid #eeeeee;
+    background-color: white;
+    font-size: 24px;
+    z-index: 1040;
+    -webkit-backface-visibility: hidden;
+}
+
+.fixed-btn .go-top {
+    border: 1px solid #cccccc;
+}
+
+.fixed-btn a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+}
+
+.fixed-btn a i {
+    vertical-align: middle;
+}
+
+div .login-sns {
+    text-align: center;
+}
+
+.login-sns li > a {
+    width: 44px;
+    height: 44px;
+    display: inline-block;
+    border-radius: 50%;
+    line-height: 44px;
+    font-size: 20px;
+    background: #cccccc;
+}
+
+.login-sns li {
+    display: inline-block;
+
+}
+
+.login-sns p {
+    margin-bottom: 15px;
+    color: #999999;
+}
+
+.content-wrap {
+    margin-top: 35px;
+}
+
+.form-control {
+    display: inline;
+    max-width: 200px;
+}
+
+.user-image {
+    background-color: #ffffff;
+    padding: 10px 10px;
+    margin: 10px;
+    text-align: center;
+}
+
+.blog-tags {
+    background-color: #ffffff;
+    padding: 21px 25px;
+    width: 100%;
+}
+
+#tags a {
+    border: 1px solid #ebebeb;
+    padding: 2px 7px;
+    color: #959595;
+    line-height: 1.5em;
+    display: inline-block;
+    margin: 0 7px 7px 0;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border-radius: 14px;
+}
+
+#tags a:hover {
+    background-color: #ffba5e;
+    color: #ffffff;
+}
+
+.fa-weibo:before {
+    content: "\f18a";
+}
+
+#vm-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.blog-post {
+    padding: 5px;
+    margin-bottom: 15px;
+}
+
+.post-left {
+    margin-top: 35px;
+    margin-bottom: 0;
+    color: #999;
+}
+
+.post-right {
+    color: #00aff2;
+    margin-left: 550px;
+}
+
+#manage-table {
+    table-layout: fixed; /* 只有定义了表格的布局算法为fixed，下面td的定义才能起作用。 */
+}
+
+#manage-table td {
+    width: 100%;
+    word-break: keep-all; /* 不换行 */
+    white-space: nowrap; /* 不换行 */
+    overflow: hidden; /* 内容超出宽度时隐藏超出部分的内容 */
+    text-overflow: ellipsis; /* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一 起使用。*/
+}
+
+#footer {
+    display: inline;
+    /*position: absolute;*/
+    color: #cccccc;
+    background-color: #f0f0f0;
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 18.4%;
+    padding-right: 18.4%;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+
+}
+
+.tail #tail-left {
+    margin-right: 70px;
+}
+
+.tail #tail-right {
+    margin-left: 70px;
+}
+
+/* 小屏幕（平板，大于等于768像素） */
+@media (min-width: 768px) {
+
+}
+
+/*  中屏幕（桌面显示器，大于等于992像素） */
+@media (min-width: 992px) {
+    .blog-post {
+        padding: 15px 25px;
+        margin-bottom: 35px;
+    }
+
+}
+
+/*  大屏幕（大桌面显示器，大于等于1200像素） */
+@media (min-width: 1200px) {
+
+}
+

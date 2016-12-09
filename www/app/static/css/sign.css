@@ -1,0 +1,189 @@
+@charset "UTF-8";
+
+.container {
+    display: block;
+    width: 940px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 0;
+}
+
+.login-page {
+    padding: 120px 0 200px;
+    text-align: center;
+}
+
+/*登录注册页logo*/
+
+.logo {
+    background-image: url(../img/5cm.jpg);
+    height: 200px;
+    background-size: cover;
+}
+
+/*登录注册页选项卡*/
+
+.sign-type {
+    margin: 70px auto 50px;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.sign-type span {
+    position: relative;
+    top: 10px;
+    padding: 0 30px;
+    background: white;
+}
+
+.sign-type span a {
+    color: #b1b1b1;
+    font-size: 18px;
+    height: 29px;
+}
+
+/*.sign-type span .signin-btn {*/
+    /*color: #3f3f3f;*/
+/*}*/
+
+/*.sign-type span .signin-btn:hover {*/
+    /*color: #000000;*/
+/*}*/
+
+/*.sign-type span .signup-btn:hover {*/
+    /*color: #3f3f3f;*/
+/*}*/
+
+/*登录内容*/
+
+.sign-in {
+    display: block;
+}
+
+.sign-in form {
+    width: 300px;
+    padding-bottom: 15px;
+    margin: 0 auto 25px;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.sign-in form .form-group {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.sign-in .add-on {
+    width: 20%;
+    float: left;
+    border-radius: 4px 0 0 4px;
+    border-right: 1px solid #eeeeee;
+}
+
+.sign-in .add-input {
+    width: 80%;
+    float: right;
+    border-radius: 0 4px 4px 0;
+    border-left: 1px solid #eeeeee;
+}
+
+.sign-in .btn {
+    background-color: #006abf;
+    border-color: #006abf;
+    border-radius: 4px 4px 4px 4px;
+}
+
+.sign-in .btn:hover {
+    background-color: #0093bf;
+    border-color: #0093bf;
+}
+
+/*注册页*/
+
+.sign-up {
+    display: block;
+}
+
+.sign-up form {
+    width: 300px;
+    padding-bottom: 15px;
+    margin: 0 auto 25px;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.sign-up form .form-group {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.sign-up .add-on {
+    width: 20%;
+    float: left;
+    border-radius: 4px 0 0 4px;
+    border-right: 1px solid #eeeeee;
+}
+
+.sign-up .add-input {
+    width: 80%;
+    float: right;
+    border-radius: 0 4px 4px 0;
+    border-left: 1px solid #eeeeee;
+}
+
+.sign-up .btn {
+    background-color: #00bf47;
+    border-color: #00bf47;
+    border-radius: 4px 4px 4px 4px;
+}
+
+.sign-up .btn:hover {
+    background-color: #00bf7f;
+    border-color: #00bf7f;
+}
+
+/*第三方登录*/
+.login-sns {
+    text-align: center;
+}
+
+.login-sns li > a {
+    width: 44px;
+    height: 44px;
+    display: inline-block;
+    border-radius: 50%;
+    line-height: 44px;
+    font-size: 20px;
+    background: #E6E6E6;
+}
+
+.login-sns li {
+    display: inline-block;
+
+}
+
+.login-sns p {
+    margin-bottom: 15px;
+    color: #999999;
+}
+
+.weibo a:hover {
+    background-color: #fff00a;
+    color: #ff131a;
+}
+
+.qq a:hover {
+    background-color: #c6000f;
+    color: #ffffff;
+}
+
+.google a:hover {
+    background-color: #ff5f1c;
+    color: #ffffff;
+}
+
+.wechat a:hover {
+    background-color: #49BE38;
+    color: #ffffff;
+}
+
+

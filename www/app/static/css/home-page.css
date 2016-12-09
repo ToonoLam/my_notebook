@@ -1,0 +1,136 @@
+@charset "UTF-8";
+
+/*标签栏*/
+
+.blog-nav {
+    /*用户主页键在1040层*/
+    /*主页导航在1039层*/
+    z-index: 1039;
+    position: fixed;
+    left: 27.25%;
+    /*width: 78.57%;*/
+    /*100*96.93%*75%*80%*/
+    width: 58.158%;
+    height: 10%;
+    /*padding: 0;*/
+    padding-left: 20px;
+    border-bottom: 2px solid #C5C5C5;
+    background-color: #ffffff;
+
+}
+
+/*页面标签*/
+
+#tags {
+    float: left;
+}
+
+#tags a {
+    border: 1px solid #C5C5C5;
+    padding: 2px 7px;
+    color: #959595;
+    line-height: 25px;
+    display: inline-block;
+    margin: 20px 7px 0 0;
+    /*margin-top: 20px;*/
+    /*margin-right: 7px;*/
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border-radius: 14px;
+}
+
+/*获取焦点后*/
+#tags a:hover {
+    background-color: #E78170;
+    /*字体颜色*/
+    color: #ffffff;
+}
+
+/*搜索*/
+.search-form {
+    border: 1px solid #C5C5C5;
+    padding: 2px 7px;
+    color: #959595;
+    line-height: 20px;
+    display: inline-block;
+    margin: 20px 7px 0 0;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border-radius: 14px;
+    float: right;
+}
+
+.search-form input {
+    color: #959595;
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+    outline: none;
+}
+
+.search-form:hover {
+    border: 1px solid #00b4f5;
+}
+
+/*内容页*/
+
+.blog-contents {
+    /*主页内容在1038层*/
+    z-index: 1038;
+    position: relative;
+    /*100*10%*/
+    top: 10%;
+    width: 80%;
+    height: 90%;
+    max-width: 80%;
+    background-color: #ffffff;
+    padding-left: 36px;
+    padding-top: 5px;
+    margin-top: 6.6667%;
+    /*overflow: hidden; !* 内容超出宽度时隐藏超出部分的内容 *!*/
+}
+
+/*博客内容*/
+
+.blog-post {
+    position: relative;
+    padding: 5px;
+    margin-bottom: 15px;
+}
+
+.post-left {
+    float: left;
+    margin-bottom: 0;
+}
+
+.post-left small {
+    color: #999;
+}
+
+.post-right {
+    float: right;
+    margin-bottom: 0;
+}
+
+.post-right a {
+    color: #00aff2;
+}
+
+.divider {
+    height: 2px;
+    border: none;
+    margin-top: 30px;
+    border-top: 2px dotted #C5C5C5;
+}
+
+#manage-table {
+    table-layout: fixed; /* 只有定义了表格的布局算法为fixed，下面td的定义才能起作用。 */
+}
+
+#manage-table td {
+    width: 100%;
+    word-break: keep-all; /* 不换行 */
+    white-space: nowrap; /* 不换行 */
+    overflow: hidden; /* 内容超出宽度时隐藏超出部分的内容 */
+    text-overflow: ellipsis; /* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一 起使用。*/
+}
+

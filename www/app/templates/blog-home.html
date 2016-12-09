@@ -1,0 +1,77 @@
+{% extends 'base-blog.html' %}
+
+{% block title %} 主页 {% endblock %}
+
+{% block beforehead %}
+<link rel="stylesheet" href="/static/css/home-page.css">
+{% endblock %}
+
+{% block home_content %}
+<div class="blog-nav">
+    <!--tags-->
+    <div id="tags">
+        <span class="fa fa-tags" style="color: #959595"> ： </span>
+        <a href="?tag=廖雪峰python实战">廖雪峰python实战</a>
+        <a href="?tag=others">others</a>
+    </div>
+    <!--search-->
+    <form class="search-form" target="_blank" action="/search" accept-charset="UTF-8" method="get"><input
+            name="utf8" type="hidden" value="✓">
+        <input class="input-medium search-query" type="search" name="q" id="q" placeholder="搜索" />
+        <span class="search_trigger" onclick="$('form.search-form').submit();"><i class="fa fa-search"></i></span>
+    </form>
+</div>
+<div class="blog-contents content-wrap">
+
+    {% for blog in blogs %}
+    <article class="blog-post">
+        <header>
+            <h3 class="blog-post-title text-center"><a href="blog/{{ blog.id }}">{{ blog.name }}</a></h3>
+
+        </header>
+        <div class="container-fluid blog-summary">
+        {{ blog.content|marked|safe }}
+        </div>
+        <footer class="post-permalink" style="display: block">
+            <span class="post-left"><small>发表于 {{ blog.created_at|datetime }}</small></span>
+            <span class="post-right"><a href="blog/{{ blog.id }}"><small>阅读更多</small></a></span>
+        </footer>
+        <!--<div style="position: relative; margin: 5px; height: 10px;"></div>-->
+
+    </article>
+    <hr class="divider"/>
+    {% endfor %}
+    <nav class="col-xs-12 text-center">
+        <ul class="pagination">
+            <li class="{{'active' if page.index == 1}}">
+                <a href="?tag={{tag}}&amp;page=1&amp;size={{page.limit}}">1</a>
+            </li>
+            {% if (page.index - 1) > 3 %}
+            <li class="disabled"><span>...</span></li>
+            {% endif %}
+            {% for index in range(2, page.last) if (index - page.index) | abs < 3%}
+            <li class="{{'active' if page.index == index}}"><a
+                    href="?tag={{tag}}&amp;page={{index}}&amp;size={{page.limit}}">{{ index }}</a></li>
+            {% endfor %}
+            {% if (page.last - page.index) > 3 %}
+            <li class="disabled"><span>...</span></li>
+            {% endif %}
+            {% if page.last > 1 %}
+            <li class="{{'active' if page.index == page.last}}"><a
+                    href="?tag={{tag}}&amp;page={{page.last}}&amp;size={{page.limit}}">{{page.last}}</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+    $('.blog-summary').each(function () {
+//        选择主页展示多少内容
+        $(this).children('*:gt(10)').remove();
+        $(this).append('<strong>......</strong>');
+    });
+    $('.content-wrap').fadeIn();
+</script>
+{% endblock %}
