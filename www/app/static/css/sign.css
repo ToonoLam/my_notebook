@@ -35,23 +35,20 @@
     background: white;
 }
 
-.sign-type span a {
+.sign-type span button {
     color: #b1b1b1;
     font-size: 18px;
     height: 29px;
+    background-color: #ffffff;
+    border-style: none;
+    outline:none
 }
 
-/*.sign-type span .signin-btn {*/
-    /*color: #3f3f3f;*/
-/*}*/
 
-/*.sign-type span .signin-btn:hover {*/
-    /*color: #000000;*/
-/*}*/
-
-/*.sign-type span .signup-btn:hover {*/
-    /*color: #3f3f3f;*/
-/*}*/
+/*无法实现*/
+.sign-type span button:hover {
+    color: #000000;
+}
 
 /*登录内容*/
 
