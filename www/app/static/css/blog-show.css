@@ -3,8 +3,33 @@
 .container {
     display: block;
     position: relative;
-    width: 700px;
+    width: 1000px;
     margin-right: auto;
     margin-left: auto;
     padding: 0;
 }
+
+/*博客内容*/
+
+.blog-post {
+    padding: 5px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border-bottom: 1px dotted #eeeeee;
+    box-shadow: 0 0 8px #888888;
+}
+
+.blog-post-head {
+    margin-top: 50px;
+    padding-bottom: 20px;
+    text-align: center;
+    border-bottom: 3px solid #eeeeee;
+}
+
+.blog-post-meta {
+    margin-top: 20px;
+    color: #bababa;
+}
+
+/*博客评论*/
+

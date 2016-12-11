@@ -10,43 +10,17 @@
 {% block major_content %}
 
 <div class="container">
-    <div class="row">
-        <article class="blog-post">
-            <h1 class="blog-post-title"><a href="#">{{ blog.name }}</a></h1>
+
+    <article class="blog-post">
+        <div class="blog-post-head">
+            <h1 class="blog-post-title">{{ blog.name }}</h1>
             <p class="blog-post-meta">发表于
                 <time>{{ blog.created_at|datetime }}</time>
             </p>
-            <p>{{ blog.content|marked|safe }}</p>
-            <hr class="divider"/>
-        </article>
-    </div>
-    <div class="comment" id="blog">
-        {% if __user__ %}
-        <h4>添加评论</h4>
-
-        <div class="row">
-            <div class="alert alert-danger" hidden="hidden" style="margin: 15px;">
-                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                <span class="sr-only">Error:</span>
-                <span v-text="message"></span>
-            </div>
-            <form class="form col-sm-6" v-on:submit.prevent="submit">
-                <div class="form-group">
-                    <label class="sr-only" for="comment">内容</label>
-                    <textarea class="form-control" rows="15" id="comment" name="comment" placeholder="内容"
-                              v-model="comment"></textarea>
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-primary">Submit</button>
-                </div>
-            </form>
-            <div class="col-sm-6 pre-scrollable" v-html="comment|marked"></div>
         </div>
-
-        {% else %}
-        <h4>请<a href="/bootstrap/signin">登陆</a>后再评论，如未注册请先<a href="/bootstrap/register">注册</a></h4>
-        {% endif %}
-        <hr class="divider"/>
+        <p>{{ blog.content|marked|safe }}</p>
+    </article>
+    <div class="comment" id="blog-comment">
 
         <h4>最新评论</h4>
         <ul class="media-list">
@@ -66,13 +40,41 @@
                 <hr class="divider"/>
             </li>
         </ul><!-- media-list -->
+        <hr class="divider"/>
+
+        {% if __user__ %}
+
+
+
+        <form class="form" v-on:submit.prevent="submit">
+            <div class="form-group">
+                <button class="btn btn-primary" style="display: inline;"><h4>添加评论</h4></button>
+
+                <span class="alert alert-danger" hidden="hidden" style="margin: 15px;">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <span class="sr-only">Error:</span>
+                    <span v-text="message"></span>
+                </span>
+            </div>
+            <div class="form-group col-sm-6" style="padding-left: 0;">
+                <textarea class="form-control" rows="15" id="comment" name="comment" placeholder="内容"
+                          v-model="comment"></textarea>
+            </div>
+            <div class="col-sm-6 pre-scrollable" style="border-radius: 4px; height: 313px; box-shadow: 0 0 3px #888888;" v-html="comment|marked"></div>
+        </form>
+
+        {% endif %}
     </div>
 </div>
-
+{% if __user__ is none %}
+<div class="check-sign" style="z-index: 2000; position: fixed; color: #cdcdcd; bottom: 0; width: 100%; height: 40px; text-align: center; vertical-align: middle; background-color: #1cbebf; opacity: 0.9;">
+    <h4>请<a href="/bootstrap/signin" style="color: #ffffff;">登陆</a>后再评论，如未注册请先<a href="/bootstrap/signup" style="color: #ffffff;">注册</a></h4>
+</div>
+{% endif %}
 {% endblock %}
 
 {% block script %}
 <script src="/static/js/cdls/vue.min.js"></script>
-<script src="/static/js/cdls/sha1.min.js"></script>
-<script src="/static/js/blog.js"></script>
+<script src="/static/js/cdls/marked.min.js"></script>
+<script src="/static/js/blog_show.js"></script>
 {% endblock %}

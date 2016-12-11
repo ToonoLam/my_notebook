@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+
 .container {
     display: block;
     width: 940px;
@@ -26,6 +27,8 @@
 .sign-type {
     margin: 70px auto 50px;
     border-bottom: 1px solid #eeeeee;
+    font-weight: bold;
+    line-height: 20px;
 }
 
 .sign-type span {
