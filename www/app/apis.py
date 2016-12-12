@@ -145,7 +145,8 @@ async def api_get_blog_comments(id):
 @post('/api/blogs/{id}/comments')
 async def api_create_comment(id, request, *, content, time):
     user = request.__user__
-    check_user(user, check_admin=False)
+    # 非管理员账号也可以发评论
+    # check_user(user, check_admin=False)
     check_string(content=content)
     blog = await Blog.find(id)
     if blog is None:

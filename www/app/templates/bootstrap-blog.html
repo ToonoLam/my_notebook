@@ -44,7 +44,8 @@
                 <ul class="media-list">
                     <li class="media" v-for="c in comments" track-by="id">
                         <div class="media-left">
-                            <img class="media-object img-thumbnail" :src="c.user_image" alt="user_image" width="150" height="150"/>
+                            <!-- v-bind可以省略, 直接写成:src -->
+                            <img class="media-object img-thumbnail" v-bind:src="c.user_image" alt="user_image" width="150" height="150"/>
                         </div>
                         <div class="media-body">
                             <h4 class="media-heading" v-text="c.user_name"></h4>
