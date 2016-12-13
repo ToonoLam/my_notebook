@@ -1,5 +1,5 @@
 
-var blog = new Vue({
+var blog_old = new Vue({
     el: '#blog',
     data: {
         id: location.pathname.split('/').pop(),

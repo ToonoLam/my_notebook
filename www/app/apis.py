@@ -135,6 +135,7 @@ async def api_update_blog(id, request, *, name, summary, content):
 # 取某篇博客的所有评论
 @get('/api/blogs/{id}/comments')
 async def api_get_blog_comments(id):
+    print(id)
     comments = await Comment.findAll('blog_id = ?', [id], orderBy='created_at desc')
     for c in comments:
         c.content = marked_filter(c.content)

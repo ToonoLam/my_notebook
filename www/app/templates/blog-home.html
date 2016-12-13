@@ -26,7 +26,7 @@
     {% for blog in blogs %}
     <article class="blog-post">
         <header>
-            <h3 class="blog-post-title text-center"><a href="blog/{{ blog.id }}">{{ blog.name }}</a></h3>
+            <h3 class="blog-post-title text-center"><a href="{{ blog.id }}">{{ blog.name }}</a></h3>
 
         </header>
         <div class="container-fluid blog-summary">
@@ -34,7 +34,7 @@
         </div>
         <footer class="post-permalink" style="display: block">
             <span class="post-left"><small>发表于 {{ blog.created_at|datetime }}</small></span>
-            <span class="post-right"><a href="blog/{{ blog.id }}"><small>阅读更多</small></a></span>
+            <span class="post-right"><a href="{{ blog.id }}"><small>阅读更多</small></a></span>
         </footer>
         <!--<div style="position: relative; margin: 5px; height: 10px;"></div>-->
 

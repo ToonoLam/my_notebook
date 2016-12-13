@@ -19,24 +19,13 @@ from handler.handlers import *
 
 # 测试
 @get('/test')
-async def test( *, tag='', page='1', size='10'):
-    num = await Blog.countRows(where="position(? in `summary`)", args=[tag])
-    page = Page(num, set_valid_value(page), set_valid_value(size, 10))
-    if num == 0:
-        blogs = []
-    else:
-        blogs = await Blog.findAll("position(? in `summary`)", [tag], orderBy='created_at desc',
-                                   limit=(page.offset, page.limit))
-    id = '001480598473277efc95dd2030242d481be8e830a1ef774000'
+async def test(template, id):
     try:
         blog = await Blog.find(id)
     except APIResourceNotFoundError as e:
         return dict(error=e.error, data=e.data, message=e.message)
     return {
-        '__template__': 'test.html',
-        'blogs': blogs,
-        'page': page,
-        'tag': tag,
+        '__template__': 'blog-show.html',
         'blog': blog
     }
 
@@ -90,13 +79,13 @@ def signin(template):
 
 
 # 博客页面
-@get('/{template}/blog/{id}')
+@get('/{template}/{id}')
 async def get_blog(template, id):
     try:
         blog = await Blog.find(id)
     except APIResourceNotFoundError as e:
         return dict(error=e.error, data=e.data, message=e.message)
     return {
-        '__template__': '%s-blog.html' % (template),
+        '__template__': 'blog-show.html',
         'blog': blog
     }

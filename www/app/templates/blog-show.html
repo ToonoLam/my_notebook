@@ -26,7 +26,8 @@
         <ul class="media-list">
             <li class="media" v-for="c in comments" track-by="id">
                 <div class="media-left">
-                    <img class="media-object img-thumbnail" :src="c.user_image" alt="user_image" width="150"
+                    <!-- v-bind可以省略不写 -->
+                    <img class="media-object img-thumbnail" v-bind:src="c.user_image" alt="user_image" width="150"
                          height="150"/>
                 </div>
                 <div class="media-body">
@@ -65,8 +66,8 @@
     </div>
 </div>
 {% if __user__ is none %}
-<div class="check-sign" style="z-index: 2000; position: fixed; color: #cdcdcd; bottom: 0; width: 100%; height: 40px; text-align: center; vertical-align: middle; background-color: #1cbebf; opacity: 0.9;">
-    <h4>请<a href="/bootstrap/signin" style="color: #ffffff;">登陆</a>后再评论，如未注册请先<a href="/bootstrap/signup" style="color: #ffffff;">注册</a></h4>
+<div class="check-sign">
+    <h4>请<a href="/bootstrap/signin">登陆</a>后再评论，如未注册请先<a href="/bootstrap/signup">注册</a></h4>
 </div>
 {% endif %}
 {% endblock %}
