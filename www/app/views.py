@@ -19,17 +19,19 @@ from handler.handlers import *
 
 # 测试
 @get('/test')
-async def test(template, id):
+async def test():
+    id = '001480598525000a60a7a150a054cafae2e09f7c5f52ba0000'
     try:
         blog = await Blog.find(id)
     except APIResourceNotFoundError as e:
         return dict(error=e.error, data=e.data, message=e.message)
+
     return {
-        '__template__': 'blog-show.html',
+        '__template__': 'test.html',
         'blog': blog
     }
 
-@get('/bootstrap/home')
+@get('/bootstrap/userhome')
 async def homepage():
     return {
         '__template__': 'bootstrap-home.html'
@@ -79,8 +81,8 @@ def signin(template):
 
 
 # 博客页面
-@get('/{template}/{id}')
-async def get_blog(template, id):
+@get('/blog/{id}')
+async def get_blog(id):
     try:
         blog = await Blog.find(id)
     except APIResourceNotFoundError as e:

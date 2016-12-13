@@ -20,7 +20,7 @@ from handler.handlers import Page, set_valid_value, check_user, check_string, ch
 '''api'''
 
 # 注册新用户
-@post('/signup')
+@post('/blog/signup')
 async def register(*, name, email, sha1_pw, oid=None, image=None):
     check_string(name=name)
     check_email_and_password(email, sha1_pw)
@@ -42,7 +42,7 @@ async def register(*, name, email, sha1_pw, oid=None, image=None):
 
 
 # 登陆验证
-@post('/signin')
+@post('/blog/signin')
 async def authenticate(*, email, sha1_pw):
     check_email_and_password(email, sha1_pw)
     users = await User.findAll('email = ?', [email])
@@ -133,14 +133,12 @@ async def api_update_blog(id, request, *, name, summary, content):
 
 
 # 取某篇博客的所有评论
-@get('/api/blogs/{id}/comments')
+@get('/api/blogs/{id}/getcomments')
 async def api_get_blog_comments(id):
-    print(id)
     comments = await Comment.findAll('blog_id = ?', [id], orderBy='created_at desc')
     for c in comments:
         c.content = marked_filter(c.content)
     return dict(comments=comments)
-
 
 # 创建新评论
 @post('/api/blogs/{id}/comments')

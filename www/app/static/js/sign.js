@@ -15,7 +15,7 @@ var vmSignIn = new Vue({
             if(! self.signin_email ){
                 return showAlert(self, '请输入email');
             }
-            postJSON('/signin', {
+            postJSON('/blog/signin', {
                 email: self.signin_email,
                 sha1_pw: self.password==='' ? '' : CryptoJS.SHA1(self.signin_email + ':' + self.password).toString()
             }, function(err, result){
@@ -62,7 +62,7 @@ var vmSignUp = new Vue({
                 return showAlert(self, '两次输入的口令不一致');
             }
             
-            postJSON('/signup', {
+            postJSON('/blog/signup', {
                 name: self.name,
                 email: self.signup_email,
                 sha1_pw: CryptoJS.SHA1(self.signup_email + ':' + self.password1).toString(),

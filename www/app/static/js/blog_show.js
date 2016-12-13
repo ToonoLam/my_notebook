@@ -2,30 +2,36 @@
  * Created by Toono on 2016/12/11.
  */
 
-var blog = new Vue({
+var vmblog = new Vue({
     el: '#blog-comment',
     data: {
         id: location.pathname.split('/').pop(),
         comment: '',
         comments: [],
-        message:''
+        message: ''
     },
     filters: {
         marked: marked
     },
-    ready: function() {
+    ready: function () {
         var self = this;
-        getJSON('/api/blogs/' + self.id + '/comments', function (err, data) {
+
+        // alert('/api/blogs/' + self.id + '/comments');
+        // ready可执行至此
+        getJSON('/api/blogs/' + self.id + '/getcomments', function (err, data) {
             if (err) {
                 return alert(err.message || err.data || err);
                 }
             self.comments = data.comments;
+            // alert(self.comments);
+            // getJSON()无法执行
         });
+
     },
     methods: {
-        submit: function() {
+        submit: function () {
             var self = this;
-            if (! self.comment.trim()) {
+            if (!self.comment.trim()) {
                 return showAlert(self, '请输入评论内容！');
             }
             postJSON('/api/blogs/' + self.id + '/comments', {

@@ -55,14 +55,14 @@
             {% if __user__.image == "/static/img/user.png" %}
                 <img class="user-image" src="/static/img/user.png" alt="100" />
             {% else %}
-                <span class="user-image"> {{ __user__.name }} </span>
+                <img class="user-image" src={{ __user__.image }} alt="100" />
             {% endif %}
             <b class="caret"></b>
         </a>
         <ul class="dropdown-menu arrow-top">
             {% if __user__.admin %}
             <li>
-                <a class="ico" href="/bootstrap/home">
+                <a class="ico" href="/bootstrap/userhome">
                     <i class="fa fa-user"></i>
                     个人主页
                 </a>
