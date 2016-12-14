@@ -24,23 +24,32 @@
 
         <h4>最新评论</h4>
         <ul class="media-list">
-            <li class="media" v-for="c in comments" track-by="id">
-                <div class="media-left">
+
+            <li class="media" v-for="c in comments" track-by="id" style="box-shadow: 0 0 3px #888888;">
+                <div class="media-top" style="vertical-align: middle">
                     <!-- v-bind可以省略不写 -->
-                    <img class="media-object img-thumbnail" v-bind:src="c.user_image" alt="user_image" width="150"
-                         height="150"/>
+                    <div class="media-left">
+                    <img style="border: 0;" class="media-object img-thumbnail" v-bind:src="c.user_image"
+                         alt="user_image" align="middle" width="70px" height="70px"/>
+                    </div>
+                    <div class="media-right" style="vertical-align: middle">
+                    <h4 style="" class="media-heading" v-text="c.user_name"></h4>
+                    <small style="color: #b2b2b2;" v-text="'发表于 ' + c.created_at.toDateTime('yyyy-MM-dd')"></small>
+                    </div>
+
                 </div>
-                <div class="media-body">
-                    <h4 class="media-heading" v-text="c.user_name"></h4>
-                    <small v-text="'发表于 ' + c.created_at.toDateTime('yyyy-MM-dd')"></small>
-                    <hr class="divider"/>
+                <div class="media-body" style="padding: 20px;">
+
+{#                    <hr class="divider"/>#}
                     <article>
                         <p v-html="c.content"></p>
                     </article>
+
                 </div>
-                <hr class="divider"/>
+
             </li>
         </ul><!-- media-list -->
+
         <hr class="divider"/>
 
         {% if __user__ %}
@@ -56,7 +65,7 @@
                 </span>
             </div>
             <div class="form-group col-sm-6" style="padding-left: 0;">
-                <textarea class="form-control" rows="15" id="comment" name="comment" placeholder="内容"
+                <textarea class="form-control" rows="15" id="comment" name="comment" placeholder="默认使用markdown解析内容"
                           v-model="comment"></textarea>
             </div>
             <div class="col-sm-6 pre-scrollable" style="border-radius: 4px; height: 313px; box-shadow: 0 0 3px #888888;" v-html="comment|marked"></div>

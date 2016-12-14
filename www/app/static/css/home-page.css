@@ -97,21 +97,31 @@
     margin-bottom: 15px;
 }
 
+.post-title a {
+    text-decoration: none;
+
+}
+
+.post-title a:hover {
+    font-weight: lighter;
+    color: #000000;
+}
+
+.post-time {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.post-time small {
+    color: #999;
+}
+
 .post-left {
     float: left;
     margin-bottom: 0;
 }
 
-.post-left small {
-    color: #999;
-}
-
-.post-right {
-    float: right;
-    margin-bottom: 0;
-}
-
-.post-right a {
+.post-left a {
     color: #00aff2;
 }
 
