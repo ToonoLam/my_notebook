@@ -1,48 +1,50 @@
-{% extends 'base-content.html' %}
+{% extends 'base-all.html' %}
 
 {% block title %}编辑日志{% endblock %}
 
 {% block beforehead %}
-<link rel="stylesheet" href="/static/css/blog-edit.css">
+    <link rel="stylesheet" href="/static/css/blog-edit.css">
 {% endblock %}
 
-{% block major_content %}
+{% block all_content %}
+    <form class="center-block" id="blog" role="from" v-on:submit.prevent="submit">
+        <div class="alert alert-danger" role="alert" hidden="hidden">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            <span v-text="message"></span>
+        </div>
+        <div class="form-group form-group-lg" style="margin-bottom: 0; border: 0;padding: 0">
+            <input class="form-control title" style="border:0;outline:none" id="name" name="name" type="text"
+                   placeholder="标题" v-model="blog.name">
+        </div>
+        <div class="col-sm-6 compiled" style="padding: 0;">
 
-<div class="container">
-        <main>
-            <form class="center-block" id="blog" role="from" v-on:submit.prevent="submit">
-            <div class="alert alert-danger" role="alert" hidden="hidden">
-                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                <span class="sr-only">Error:</span>
-                <span v-text="message"></span>
-            </div>
             <div class="form-group form-group-lg">
-                <label class="sr-only" for="name">标题</label>
-                <input class="form-control" id="name" name="name" type="text" placeholder="标题" v-model="blog.name">
+                    <textarea style="border: 0;height: 650px;resize:none;outline: none" class="form-control"
+                              id="content" name="content" placeholder="请输入内容"
+                              v-model="blog.content"></textarea>
             </div>
-            <span>
-            <div class="form-group form-group-lg  col-sm-6">
-                <label class="sr-only" for="summary">标签</label>
-                <input class="form-control" id="summary" name="summary" type="text" placeholder="标签" v-model="blog.summary">
-            </div>
-            <div class="form-group" style="float: right">
-                <button class="btn btn-primary btn-lg">保存</button>
-            </div>
-            </span>
-            <div class="form-group form-group-lg col-sm-6">
-                <label class="sr-only" for="content">内容</label>
-                <textarea class="form-control" id="content" name="content" placeholder="请输入内容" rows="17" v-model="blog.content"></textarea>
-            </div>
-            <div class="col-sm-6 pre-scrollable" style="border-radius: 4px; height: 800px; box-shadow: 0 0 3px #888888;" v-html="comment|marked"></div>
 
-            </form>
-        </main>
-
-</div>
+        </div>
+        <div class="col-sm-6 marked-content pre-scrollable" v-html="blog.content|marked"></div>
+        <div>
+            <span style="position: fixed; top: 5px; right: 2%; width: 45%;">
+                    <div class="form-group form-group-lg tags" style="float: left">
+                        <span class="fa fa-tags" style="color: #959595"> ： </span>
+                        <input class="form-control" id="summary" name="summary" type="text" placeholder="标签"
+                               v-model="blog.summary">
+                    </div>
+                    <div class="form-group" style="float: right">
+                        <button class="btn btn-primary btn-lg">保存>></button>
+                    </div>
+                </span>
+        </div>
+    </form>
 
 {% endblock %}
 
 {% block script %}
-<script src="/static/js/cdls/vue.min.js"></script>
-<script src="/static/js/blog_edit.js"></script>
+    <script src="/static/js/cdls/vue.min.js"></script>
+    <script src="/static/js/cdls/marked.min.js"></script>
+    <script src="/static/js/blog_edit.js"></script>
 {% endblock %}

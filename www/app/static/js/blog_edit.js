@@ -10,6 +10,9 @@ var vm = new Vue({
             content: ''
         }
     },
+    filters: {
+        marked: marked
+    },
     ready: function () {
         if (location.pathname.split('/').pop() === 'edit') {
             var id = getUrlParams('id');
