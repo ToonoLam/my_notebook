@@ -19,7 +19,7 @@ var vmblog = new Vue({
         // alert('/api/blogs/' + self.id + '/comments');
         // ready可执行至此
         getJSON('/api/blogs/' + self.id + '/getcomments', function (err, data) {
-            if (err) {
+            if (err) {  
                 return alert(err.message || err.data || err);
                 }
             self.comments = data.comments;

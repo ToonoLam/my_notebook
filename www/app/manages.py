@@ -38,7 +38,8 @@ def manage_table(template, table):
 @get('/{template}/manage/blogs/create')
 def manage_create_blog(template):
     return {
-        '__template__': '%s-blog_edit.html' % (template)
+        # '__template__': '%s-blog_edit.html' % (template)
+        '__template__': 'blog-edit.html'
     }
 
 
@@ -46,5 +47,6 @@ def manage_create_blog(template):
 @get('/{template}/manage/blogs/edit')
 def manage_edit_blog(template):
     return {
-        '__template__': '%s-blog_edit.html' % (template)
+        # '__template__': '%s-blog_edit.html' % (template)
+        '__template__': 'blog-edit.html'
     }

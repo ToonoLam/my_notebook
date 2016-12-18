@@ -7,44 +7,55 @@
 {% endblock %}
 
 {% block all_content %}
-    <form class="center-block" id="blog" role="from" v-on:submit.prevent="submit">
-        <div class="alert alert-danger" role="alert" hidden="hidden">
-            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-            <span class="sr-only">Error:</span>
-            <span v-text="message"></span>
-        </div>
-        <div class="form-group form-group-lg" style="margin-bottom: 0; border: 0;padding: 0">
-            <input class="form-control title" style="border:0;outline:none" id="name" name="name" type="text"
-                   placeholder="标题" v-model="blog.name">
-        </div>
-        <div class="col-sm-6 compiled" style="padding: 0;">
+<form class="center-block" id="blog" role="form" v-on:submit.prevent="submit">
+    <div class="alert alert-danger" role="alert" hidden="hidden"
+         style="position: fixed; top: 0; left: 3.070%; width: 96.93%; z-index: 5000;">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Error:</span>
+        <span v-text="message"></span>
+    </div>
+    <div class="files" style="position: absolute; top: 0; left: 0; width: 10%; height: 100%;">
+        <div class="" style="position:absolute; top: 0; left: 0; width: 100%; height: 10%; color: #232323; font-size: 16px; padding: 5px; background-color: #F5F5F5; text-align: center; vertical-align: middle;">
+{#            <i class="fa fa-book"> 笔记本</i>#}
 
-            <div class="form-group form-group-lg">
-                    <textarea style="border: 0;height: 650px;resize:none;outline: none" class="form-control"
-                              id="content" name="content" placeholder="请输入内容"
-                              v-model="blog.content"></textarea>
+        </div>
+        <div class="" style="position: absolute; top: 10%; left: 0; width: 100%; height: 90%;">
+            <div class="" style="position: absolute; top: 0; left: 0; width: 100%; height: 90%; background-color: #F5F5F5;">
+                <div class="" style="width: 100%; margin-top: 10px; margin-bottom: 10px;">
+                    <span class="fa fa-book" style="width: 25px;"></span>
+                    <input class="" style="background-color: #F5F5F5; width: 80px;" autocomplete="off" id="summary" name="summary" type="text" placeholder="放入笔记本"
+                            v-model="blog.summary">
+                </div>
+                <div>
+                    <span class="fa fa-book" style="width: 25px;"></span>
+                    <span style="width: 80px;">编程练习</span>
+                </div>
             </div>
+            <div style="position: absolute; top: 90%; width: 100%; height: 100%; background-color: #F5F5F5;">
 
+                <button class="edit-btn" style="position: absolute; top: 0; left: 0; width: 100%;">保存 >></button>
+            </div>
         </div>
-        <div class="col-sm-6 marked-content pre-scrollable" v-html="blog.content|marked"></div>
-        <div>
-            <span style="position: fixed; top: 5px; right: 2%; width: 45%;">
-                    <div class="form-group form-group-lg tags" style="float: left">
-                        <span class="fa fa-tags" style="color: #959595"> ： </span>
-                        <input class="form-control" id="summary" name="summary" type="text" placeholder="标签"
-                               v-model="blog.summary">
-                    </div>
-                    <div class="form-group" style="float: right">
-                        <button class="btn btn-primary btn-lg">保存>></button>
-                    </div>
-                </span>
+    </div>
+    <div class="edit-view" style="position: absolute; top: 0; left: 10%; width: 90%; height: 100%;">
+        <input class="edit-title" style="position: absolute; top: 0; left: 0; width: 100%; height: 10%; border:0; outline:none; color: #232323; font-size: 22px;"
+               autocomplete="off" id="name" name="name" type="text" placeholder="请输入标题" v-model="blog.name">
+        <div class="edit-page" style="position: absolute; top: 10%; left: 0; width: 100%; height: 90%; box-shadow: 0 0 1px black;">
+            <textarea type="text"  class="text col-sm-6" style="position: absolute; padding: 10px 16px; border: 0; top: 0; left: 0; height: 100%; resize:none; outline: none; font-size: 16px;"
+                      id="content" name="content" placeholder="请输入内容" v-model="blog.content"></textarea>
+            <div class="marked-content col-sm-6 pre-scrollable" v-html="blog.content|marked"></div>
         </div>
-    </form>
-
+    </div>
+</form>
 {% endblock %}
 
 {% block script %}
     <script src="/static/js/cdls/vue.min.js"></script>
     <script src="/static/js/cdls/marked.min.js"></script>
+    <script src="/static/js/plusin/auto-line-number.js"></script>
     <script src="/static/js/blog_edit.js"></script>
+
+<script type="text/javascript">
+    $("#content").setTextareaCount();
+</script>
 {% endblock %}

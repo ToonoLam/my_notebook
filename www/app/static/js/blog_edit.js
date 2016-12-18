@@ -17,7 +17,7 @@ var vm = new Vue({
         if (location.pathname.split('/').pop() === 'edit') {
             var id = getUrlParams('id');
             this.action = this.action + '/' + id;
-            getJSON('/api/blogs/' + id, function (err, blog) {
+            getJSON(this.action, function (err, blog) {
                 vm.blog = blog;
             });
         }
@@ -28,7 +28,7 @@ var vm = new Vue({
                 if (err) {
                     return showAlert(vm, err.message || err.data || err)
                 }
-                return location.assign(location.pathname.split('manage')[0] + 'blog/' + blog.id);
+                return location.assign(location.pathname.split('bootstrap')[0] + 'blog/' + blog.id);
             });
         }
     }
