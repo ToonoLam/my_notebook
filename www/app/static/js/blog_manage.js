@@ -8,7 +8,7 @@ var vm = new Vue({
         page: null,
         models: {
             'users': {'name': '名字', 'email': '电子邮箱'},
-            'blogs': {'name': '标题', 'user_name': '作者'},
+            'blogs': {'name': '标题', 'summary': '笔记本', 'user_name': '作者'},
             'comments': {'user_name': '作者', 'content':'内容'},
             'oauth': {'id': 'ID', 'user_id': '用户ID'}
         },

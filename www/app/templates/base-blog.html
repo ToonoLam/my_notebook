@@ -19,13 +19,3 @@
     </div>
 </div>
 {% endblock %}
-
-{% block script %}
-<script>
-    $('.blog-summary').each(function () {
-        $(this).children('*:gt(2)').remove();
-        $(this).append('<p>......</p>');
-    });
-    $('.content-wrap').fadeIn();
-</script>
-{% endblock %}

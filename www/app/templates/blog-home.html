@@ -11,13 +11,19 @@
     <!--tags-->
     <div id="tags">
         <span class="fa fa-book" style="color: #959595; font-size: 18px;"> ： </span>
-        <a href="?tag=廖雪峰python实战">廖雪峰python实战</a>
-        <a href="?tag=others">others</a>
+        <div id="folders" style="display: inline-block;">
+{#            <a href="?tag=廖雪峰python实战">廖雪峰python实战</a>#}
+{#            <a href="?tag=HTML&CSS">HTML&CSS</a>#}
+            {% for folder in folders %}
+                <a href="?tag={{ folder }}">{{ folder }}</a>
+            {% endfor %}
+
+        </div>
     </div>
     <!--search-->
     <form class="search-form" target="_blank" action="/search" accept-charset="UTF-8" method="get"><input
             name="utf8" type="hidden" value="✓">
-        <input class="input-medium search-query" type="search" name="q" id="q" placeholder="搜索" />
+        <input class="input-medium search-query" type="search" name="q" id="q" placeholder="暂不支持搜索" />
         <span class="search_trigger" onclick="$('form.search-form').submit();"><i class="fa fa-search"></i></span>
     </form>
 </div>
@@ -66,11 +72,14 @@
 
 {% block script %}
 <script>
+    // 渐变显示内容
+    $('.content-wrap').fadeIn();
+    // 主页内容展示
     $('.blog-summary').each(function () {
 //        选择主页展示多少内容
-        $(this).children('*:gt(10)').remove();
-        $(this).append('<strong>......</strong>');
+        $(this).children('*:gt(7)').remove();
+        $(this).append('<p>......</p>');
     });
-    $('.content-wrap').fadeIn();
 </script>
+
 {% endblock %}

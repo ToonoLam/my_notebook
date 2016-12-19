@@ -27,7 +27,8 @@ def manage(template):
 def manage_table(template, table):
     if check_table(table):
         return {
-            '__template__': '%s-manage.html' % (template),
+            # '__template__': '%s-manage.html' % (template),
+            '__template__': 'blog-manage.html',
             'table': table
         }
     else:
@@ -36,17 +37,23 @@ def manage_table(template, table):
 
 # 创建博客
 @get('/{template}/manage/blogs/create')
-def manage_create_blog(template):
+async def manage_create_blog(template):
+    blogs = await Blog.findAll(orderBy='created_at desc')
+    tags = [blog['summary'] for blog in blogs]
+    folders = set(tags)
     return {
-        # '__template__': '%s-blog_edit.html' % (template)
-        '__template__': 'blog-edit.html'
+        '__template__': 'blog-edit.html',
+        'folders': folders,
     }
 
 
 # 修改博客
 @get('/{template}/manage/blogs/edit')
-def manage_edit_blog(template):
+async def manage_edit_blog(template):
+    blogs = await Blog.findAll(orderBy='created_at desc')
+    tags = [blog['summary'] for blog in blogs]
+    folders = set(tags)
     return {
-        # '__template__': '%s-blog_edit.html' % (template)
-        '__template__': 'blog-edit.html'
+        '__template__': 'blog-edit.html',
+        'folders': folders,
     }

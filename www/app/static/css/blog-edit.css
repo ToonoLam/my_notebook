@@ -21,6 +21,24 @@ input, textarea {
     max-height: 100%;
 }
 
+.folders {
+    background-color: #ffffff;
+}
+
+.folders a {
+    color: #191919;
+}
+
+.folders:hover {
+    background-color: #F5F5F5;
+    color: #000000;
+}
+
+.files div div .active {
+    background-color: #006abf;
+    color: #ffffff;
+}
+
 #blog {
     position: fixed;
     top: 0;

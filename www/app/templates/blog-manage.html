@@ -1,13 +1,16 @@
-{% extends 'bootstrap-base.html' %}
+{% extends 'base-major.html' %}
 
 {% block title %}manage - {{table}}{% endblock %}
 
-{% block content %}
+{% block beforehead %}
+    <link rel="stylesheet" href="/static/css/blog-manage.css">
+{% endblock %}
 
+{% block major_content %}
 
-<div class="row" id="vm" style="margin-top: 20px">
+<div class="manage-table" id="vm" style="">
     <div class="panel panel-default">
-        <ul class="nav nav-tabs">
+        <ul class="nav nav-tabs" style="background-color: #e4e4e4">
             <li :class="{active: '{{table}}'===key}" v-for="(key, _) of models"><a :href="'' + key" v-text="key"></a></li>
         </ul>
         <table class="table table-striped table-hover table-responsive" id="manage-table">
@@ -18,7 +21,7 @@
                     <th class="col-sm-1" v-show="'{{table}}'!=='users' && {{__user__.admin}}">操作</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody  style="background-color: #f5f5f5;">
                 <tr v-for="item of items | limitBy page.limit" track-by="id">
                     <td v-for="(key, field) of fields">
                         <a  v-if="'{{table}}'==='blogs' && key==='name'" :href="'/bootstrap/blog/'+item.id" v-text="item.name"></a>
@@ -52,9 +55,10 @@
     </nav>
 </div>
 
+
 {% endblock %}
 
 {% block script %}
 <script src="/static/js/cdls/vue.min.js"></script>
-<script src="/static/js/manage.js"></script>
+<script src="/static/js/blog_manage.js"></script>
 {% endblock %}

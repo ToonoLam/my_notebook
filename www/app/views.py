@@ -31,10 +31,10 @@ async def test():
         'blog': blog
     }
 
-@get('/bootstrap/userhome')
+@get('/bootstrap/userpage')
 async def homepage():
     return {
-        '__template__': 'bootstrap-home.html'
+        '__template__': 'user-page.html'
     }
 
 # 首页
@@ -43,20 +43,36 @@ async def index():
     # 当用户访问首页, 自动重定向访问/bootstrap/
     return 'redirect:/bootstrap/'
 
+
+# 由于初始化了jinja2模板, 因此支持jinja2语法, 在这里{template}传入了'bootstrap'
 @get('/{template}/')
 async def home(template, *, tag='', page='1', size='3'):
-    num = await Blog.countRows(where="position(? in `summary`)", args=[tag])
+    blogs = await Blog.findAll(orderBy='created_at desc')
+    tags = [blog['summary'] for blog in blogs]
+    folders = set(tags)
+    if tag == '':
+        num = len(tags)
+    else:
+        num = tags.count(tag)
     page = Page(num, set_valid_value(page), set_valid_value(size, 10))
+
+
     if num == 0:
         blogs = []
     else:
-        blogs = await Blog.findAll("position(? in `summary`)", [tag], orderBy='created_at desc', limit=(page.offset, page.limit))
-    # 由于初始化了jinja2模板, 因此支持jinja2语法, 在这里{template}传入了'bootstrap'
+        # 数据库获取
+        # blogs = await Blog.findAll("position(? in `summary`)", [tag], orderBy='created_at desc', limit=(page.offset, page.limit))
+        # 减少数据库操作, 字典构建JSON
+        if tag == '':
+            blogs = blogs
+        else:
+            blogs = [blog for blog in blogs if blog['summary'] == tag][page.offset:(page.limit+page.offset)]
     return {
         '__template__': 'blog-home.html',
         'blogs': blogs,
         'page': page,
-        'tag': tag
+        'tag': tag,
+        'folders': folders
     }
 
 

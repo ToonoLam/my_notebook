@@ -62,15 +62,15 @@
         <ul class="dropdown-menu arrow-top">
             {% if __user__.admin %}
             <li>
-                <a class="ico" href="/bootstrap/userhome">
-                    <i class="fa fa-user"></i>
-                    个人主页
+                <a class="ico" href="/bootstrap/userpage">
+                    <i class="fa fa-gear"></i>
+                    用户配置
                 </a>
             </li>
             {% endif %}
             <li>
                 <a href="/signout">
-                    <i class="glyphicon glyphicon-log-out"></i>
+                    <i class="fa fa-sign-out"></i>
                     登出
                 </a>
             </li>
@@ -79,7 +79,7 @@
     {% else %}
     <div class="unregisterd">
         <div><a href="/bootstrap/signin"><span class="fa fa-sign-in"> 登录</span></a></div>
-        <div><a href="/bootstrap/signup"><span class="fa fa-user"> 注册</span></a></div>
+        <div><a href="/bootstrap/signup"><span class="fa fa-sign-in"> 注册</span></a></div>
     </div>
     {% endif %}
 </div>
@@ -110,7 +110,7 @@
     <!--管理界面-->
     <div class="ico-cog">
         <a class="ico-cog" href="/bootstrap/manage">
-            <i class="fa fa-cogs"></i>
+            <i class="fa fa-gears"></i>
         </a>
     </div>
     <!--{% endif %}-->
