@@ -43,7 +43,7 @@
 
 <body>
 <!-- 跳转至页首 -->
-<div class="go-top">
+<div class="go-top" id="gotop" style="display: none;">
     <a href="#"><i class="fa fa-angle-up"></i></a>
 </div>
 <!--/跳转至页首-->
@@ -96,24 +96,31 @@
     </button>
     <!--主页键-->
     <div class="ico-home">
-        <a class="ico-cog" href="/bootstrap/">
-            <img src="/static/img/bootstrap.png" alt="Brand-other-index"/>
+        <a href="/bootstrap/">
         </a>
     </div>
-    <!--{% if __user__.admin %}-->
+    {% if __user__.admin %}
     <!--博客编辑-->
     <div class="ico-edit">
-        <a class="ico-cog" href="/bootstrap/manage/blogs/create">
+        <a href="/bootstrap/manage/blogs/create">
             <i class="fa fa-pencil"></i>
         </a>
     </div>
+    {% endif %}
+    <!-- 用户栏 -->
+    {% if __user__ %}
     <!--管理界面-->
     <div class="ico-cog">
-        <a class="ico-cog" href="/bootstrap/manage">
+        <a href="/bootstrap/manage">
             <i class="fa fa-gears"></i>
         </a>
     </div>
-    <!--{% endif %}-->
+    <div class="ico-sign-out">
+        <a href="/signout">
+            <i class="fa fa-sign-out"></i>
+        </a>
+    </div>
+    {% endif %}
     <!--导航栏-->
     {% block nav %}
     {% endblock %}
@@ -135,7 +142,24 @@
 <script type="text/javascript" src="/static/js/custom.js"></script>
 <!--&lt;!&ndash; 暂不使用uk>-->
 <script>
-    $('.navbar-brand').attr('href', location.href.replace('/bootstrap/', '/uk/'));
+{#    $('.navbar-brand').attr('href', location.href.replace('/bootstrap/', '/uk/'));#}
+    backTop=function (btnId){
+        var btn=document.getElementById(btnId);
+        var d=document.documentElement;
+        var b=document.body;
+        window.onscroll=set;
+        btn.onclick=function (){
+            btn.style.display="none";
+            window.onscroll=null;
+            this.timer=setInterval(function(){
+                d.scrollTop-=Math.ceil((d.scrollTop+b.scrollTop)*0.1);
+                b.scrollTop-=Math.ceil((d.scrollTop+b.scrollTop)*0.1);
+                if((d.scrollTop+b.scrollTop)==0) clearInterval(btn.timer,window.onscroll=set);
+            },10);
+        };
+        function set(){btn.style.display=(d.scrollTop+b.scrollTop>100)?'block':"none"}
+    };
+    backTop('gotop');
 </script>
 <!--<&ndash;&gt;-->
 

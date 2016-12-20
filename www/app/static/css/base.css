@@ -143,33 +143,8 @@ ul {
     border-color: #080808;
 }
 
-
-.ico-home a {
-    background: #563d7c;
-    padding: 0;
-    margin: 0;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    display: table-cell;
-    width: 3.070%;
-    height: 40px;
-    text-align: center;
-    vertical-align: middle;
-}
-
-.ico-edit a {
-    display: table-cell;
-    margin: 0;
-    padding: 0;
-    width: 3.070%;
-    height: 40px;
-    text-align: center;
-    vertical-align: middle;
-}
-
-.ico-cog a {
+.nav-bar div a {
+    font-size: 16px;
     display: table-cell;
     margin: 0;
     padding: 0;
@@ -178,8 +153,24 @@ ul {
     height: 40px;
     text-align: center;
     vertical-align: middle;
+    color: #b2b2b2;
 }
 
+.nav-bar div a:hover {
+    background-color: #60517c;
+    color: #ffffff;
+}
+
+.nav-bar .ico-home a {
+    width: 40px;
+    background: #563d7c;
+    background-image: url("../img/bootstrap.png");
+}
+
+.ico-sign-out {
+    position: absolute;
+    bottom: 0;
+}
 
 /*主界面*/
 .view-interface {
