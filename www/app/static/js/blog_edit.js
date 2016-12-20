@@ -9,6 +9,7 @@ var vm = new Vue({
             summary: '',
             content: ''
         },
+        tag: ''
     },
     filters: {
         marked: marked
@@ -24,7 +25,7 @@ var vm = new Vue({
     },
     methods: {
         click: function (folder) {
-            this.blog.summary  = folder;
+            this.blog.summary = folder;
         },
         submit: function () {
             postJSON(this.action, this.blog, function (err, blog) {

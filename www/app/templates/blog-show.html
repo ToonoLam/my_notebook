@@ -14,7 +14,10 @@
     <article class="blog-post">
         <div class="blog-post-head">
             <h1 class="blog-post-title">{{ blog.name }}</h1>
-            <p class="blog-post-meta">发表于
+
+            <p class="blog-post-meta">
+                <a  style="margin-right: 50px;" href="/bootstrap/?tag={{ blog.summary }}">{{ blog.summary }}</a>
+                发表于
                 <time>{{ blog.created_at|datetime }}</time>
             </p>
         </div>

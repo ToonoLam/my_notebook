@@ -8,43 +8,43 @@
 
 {% block all_content %}
 <form class="center-block" id="blog" role="form" v-on:submit.prevent="submit">
-    <div class="alert alert-danger" role="alert" hidden="hidden"
-         style="position: fixed; top: 0; left: 3.070%; width: 96.93%; z-index: 5000;">
+    <div class="edit-alert alert alert-danger" role="alert" hidden="hidden">
         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
         <span class="sr-only">Error:</span>
         <span v-text="message"></span>
     </div>
-    <div class="files" style="position: absolute; top: 0; left: 0; width: 13%; height: 100%;">
-        <div class="" style="position:absolute; top: 0; left: 0; width: 100%; height: 10%; color: #232323; font-size: 16px; padding: 5px; background-color: #ffffff; text-align: center; vertical-align: middle;">
+    <div class="edit-list">
+        <div class="list-head">
 
         </div>
-        <div class="" style="position: absolute; top: 10%; left: 0; width: 100%; height: 90%;">
-            <div class="folder-ul" style="position: absolute; top: 0; left: 0; width: 100%; height: 90%; background-color: #ffffff;">
-                <div class="" style="width: 100%; margin-top: 10px; margin-bottom: 10px;">
-                    <a class="new-folder fa fa-plus" href="javascript:void(0);" style="padding: 5px 10px; width: 25px;"></a>
-                    <input class="summary" style="padding: 5px 10px; background-color: #F5F5F5; width: 100px;"
-                           autocomplete="off" id="summary" name="summary" type="text" placeholder="新建笔记本"
-                            v-model="blog.summary" />
-                </div>
-                {% for folder in folders %}
-                    <a class="folders" href="#" style="padding: 5px 10px; display: inline-block; width: 100%; text-align: left; border: 0;" v-on:click="click('{{ folder }}')">
-                        <i class="fa fa-book" style="margin-right: 10px;"></i>{{ folder }}
+        <div class="list-interface">
+            <div class="interface-folders">
+                <div class="choose-folder">
+                    <div class="choose-explain">请选择使用的笔记本</div>
+                    {% for folder in folders %}
+                    <a class="folders" href="#" v-on:click="click('{{ folder }}')">
+                        <i class="fa fa-book"></i>{{ folder }}
                     </a>
-
-                {% endfor %}
+                    {% endfor %}
+                </div>
+                <div class="create-folder">
+                    <div class="create-explain">或使用新的笔记本</div>
+                    <input class="summary" autocomplete="off" id="summary" name="summary"
+                           type="text" placeholder="键入新建笔记本名" v-model="blog.summary" />
+                </div>
             </div>
-            <div style="position: absolute; top: 90%; width: 100%; height: 100%; background-color: #F5F5F5;">
-                <button class="edit-btn" style="position: absolute; top: 0; left: 0; width: 100%;">保存 >></button>
+            <div class="interface-submit">
+                <button class="submit-btn">保存 >></button>
             </div>
         </div>
     </div>
-    <div class="edit-view" style="position: absolute; top: 0; left: 13%; width: 87%; height: 100%;">
-        <input class="edit-title" style="position: absolute; top: 0; left: 0; width: 100%; height: 10%; border:0; outline:none; color: #232323; font-size: 22px;"
-               autocomplete="off" id="name" name="name" type="text" placeholder="请输入标题" v-model="blog.name">
-        <div class="edit-page" style="position: absolute; top: 10%; left: 0; width: 100%; height: 90%; box-shadow: 0 0 1px black;">
-            <textarea type="text"  class="text col-sm-6" style="position: absolute; padding: 10px 16px; border: 0; top: 0; left: 0; height: 100%; resize:none; outline: none; font-size: 16px;"
-                      id="content" name="content" placeholder="请输入内容" v-model="blog.content"></textarea>
-            <div class="marked-content col-sm-6 pre-scrollable" v-html="blog.content|marked"></div>
+    <div class="edit-view">
+        <input class="edit-title" autocomplete="off" id="name" name="name"
+               type="text" placeholder="请输入标题" v-model="blog.name">
+        <div class="edit-page">
+            <textarea class="col-sm-6 edit-content" id="content" name="content"
+                      type="text"  placeholder="请输入内容" v-model="blog.content"></textarea>
+            <div class="col-sm-6 edit-preview pre-scrollable" v-html="blog.content|marked"></div>
         </div>
     </div>
 </form>
@@ -57,13 +57,6 @@
     <script src="/static/js/blog_edit.js"></script>
 
 <script type="text/javascript">
-    $('.new-folder').click(function () {
-        var str1 = '<a class="folders" href="#" style="padding: 5px 10px; display: inline-block; width: 100%; text-align: left; border: 0;" v-on:click="click(';
-        var str2 = ')"><i class="fa fa-book" style="margin-right: 10px;"></i>';
-        var str3 = '</a>';
-        var value = $('#summary').val();
-        $('.folder-ul').append(str1 + "'" + value +"'" + str2 + value + str3);
-    });
     $("#content").setTextareaCount();
     $('.folders').click(function () {
         $('.active').removeAttr('v-model');
@@ -71,6 +64,5 @@
         $(this).addClass('active');
         $(this).attr('v-model', "blog.summary");
     });
-
 </script>
 {% endblock %}

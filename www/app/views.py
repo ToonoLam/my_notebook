@@ -56,7 +56,6 @@ async def home(template, *, tag='', page='1', size='3'):
         num = tags.count(tag)
     page = Page(num, set_valid_value(page), set_valid_value(size, 10))
 
-
     if num == 0:
         blogs = []
     else:

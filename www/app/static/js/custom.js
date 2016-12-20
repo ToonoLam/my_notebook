@@ -1,4 +1,4 @@
-// awesome.js
+// custom.js
 
 // patch for lower-version IE:
 

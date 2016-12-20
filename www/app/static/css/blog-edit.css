@@ -5,40 +5,17 @@ input, textarea {
     border: none;
 }
 
+/*禁用浮动用户信息*/
 .user-data {
     display: none;
 }
 
+/*禁用回到页首*/
 .go-top {
     display: none;
 }
 
-.textarea-wrap, .textarea-rows {
-    height: 100% !important;
-}
-
-.pre-scrollable {
-    max-height: 100%;
-}
-
-.folders {
-    background-color: #ffffff;
-}
-
-.folders a {
-    color: #191919;
-}
-
-.folders:hover {
-    background-color: #F5F5F5;
-    color: #000000;
-}
-
-.files div div .active {
-    background-color: #006abf;
-    color: #ffffff;
-}
-
+/*设置form样式*/
 #blog {
     position: fixed;
     top: 0;
@@ -47,9 +24,159 @@ input, textarea {
     height: 100%;
 }
 
-.edit-title {
+/*设置提示框样式*/
+.edit-alert {
+    position: fixed;
+    top: 0;
+    left: 3.070%;
+    width: 96.93%;
+    z-index: 5000;
+}
+
+/*设置目录页样式*/
+.edit-list {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 13%;
+    height: 100%;
+}
+
+.edit-list .list-head {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 45px;
+    height: 10%;
+    color: #232323;
+    font-size: 16px;
+    padding: 5px;
+    background-color: #ffffff;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.edit-list .list-interface {
+    position: absolute;
+    top: 10%;
+    left: 0;
+    width: 100%;
+    height: 90%;
+}
+
+.interface-submit {
+    position: absolute;
+    top: 90%;
+    width: 100%;
+    height: 100%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    background-color: #F5F5F5;
+}
+
+.submit-btn {
+    position: absolute;
+    border: 1px solid #C5C5C5;
+    background-color: #00bf7f;
+    display: inline-block;
+    vertical-align: middle;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    /*max-width: 100px;*/
+    height: 30px;
+    font-size: 14px;
+    color: #ffffff;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.interface-folders {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90%;
+    background-color: #ffffff;
+    overflow: hidden;
+}
+
+.choose-folder {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.choose-explain {
+    width: 100%;
+    background: #00bf7f;
+    text-align: center;
+    color: #ffffff;
+    padding: 5px 10px;
+}
+
+/*设置插入的元素样式*/
+.choose-folder .folders {
+    background-color: #ffffff;
+    padding: 5px 10px;
+    display: inline-block;
+    width: 100%;
+    text-align: left;
+    border: 0;
+}
+
+.choose-folder .folders:hover {
+    background-color: #F5F5F5;
+    color: #000000;
+}
+
+.choose-folder .folders i {
+    margin-right: 10px;
+}
+
+.choose-folder .active {
+    background-color: #006abf !important;
+    color: #ffffff !important;
+}
+
+/*设置新建元素的样式*/
+.create-folder {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.create-explain {
+    width: 100%;
+    background: #00bf7f;
+    text-align: center;
+    color: #ffffff;
+    padding: 5px 10px;
+}
+
+.create-folder #summary {
+    padding: 5px 10px;
+    background-color: #f2f2f2;
+    width: 100%;
+    text-align: center;
+}
+
+.edit-view {
+    position: absolute;
+    top: 0;
+    left: 13%;
+    width: 87%;
+    height: 100%;
+}
+
+.edit-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 10%;
+    border: 0;
+    outline: none;
+    color: #232323;
     padding: 3px;
     font-size: 24px !important;
     font-weight: bold !important;
@@ -57,51 +184,40 @@ input, textarea {
     text-align: center;
 }
 
-.edit-page textarea {
+.edit-page {
+    position: absolute;
+    top: 10%;
+    left: 0;
+    width: 100%;
+    height: 90%;
+}
+
+.edit-page .edit-content {
     background-color: #2b2b2b;
     color: #ffffff;
+    position: absolute;
+    padding: 10px 16px;
+    border: 0;
+    top: 0;
+    left: 0;
+    height: 100%;
+    resize: none;
+    outline: none;
+    font-size: 16px;
 }
 
-
-.tags > #summary {
-    border: 1px solid #C5C5C5;
-    padding: 2px 7px;
-    color: #959595;
-    display: inline-block;
-    margin: 3px 7px 0 0;
-    text-decoration: none;
-    transition: all 0.2s ease;
-    border-radius: 14px;
-    max-width: 100px;
-    height: 30px;
-    font-size: 14px;
+/*强制textarea行号插件满屏*/
+.textarea-wrap, .textarea-rows {
+    height: 100% !important;
 }
 
-.edit-btn {
-    border: 1px solid #C5C5C5;
-    /*padding: 2px 7px;*/
-    background-color: #00bf7f;
-    display: inline-block;
-    /*margin: 3px 0 0 0;*/
-    vertical-align: middle;
-    text-decoration: none;
-    transition: all 0.2s ease;
-    /*max-width: 100px;*/
-    height: 30px;
-    width: 100%;
-    font-size: 14px;
-    color: #ffffff;
-}
-
-.form-group #name, .form-group #content {
-    border-radius: 0;
-}
-
-.marked-content {
+.edit-page .edit-preview {
     position: absolute;
     right: 0;
     top: 0;
     height: 100%;
     font-size: 20px;
     padding: 10px 16px;
+    /*强制预览页满屏, bootstrap属性pre-scrollable默认max-height:340px*/
+    max-height: 100%;
 }
