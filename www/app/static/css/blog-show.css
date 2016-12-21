@@ -59,6 +59,26 @@
 
 /*博客评论*/
 
+.form {
+    height: 400px;
+}
+
+.news-type {
+    margin: 70px auto 50px;
+    border-bottom: 1px solid #eeeeee;
+    font-weight: bold;
+    line-height: 20px;
+    text-align: center;
+}
+
+.news-type span {
+    position: relative;
+    top: 10px;
+    padding: 0 30px;
+    background: white;
+    color: #bababa;
+}
+
 .check-sign {
     z-index: 2000;
     position: fixed;

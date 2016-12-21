@@ -2,17 +2,16 @@
  * Created by Toono on 2016/12/21.
  */
 
+
 var vm = new Vue({
-    el: '#vmUser',
+    el: '#vm',
     data: {
         table: location.pathname.split('/').pop(),
         items: [],
         page: null,
         models: {
-            'users': {'name': '名字', 'email': '电子邮箱'},
             'blogs': {'name': '标题', 'summary': '笔记本', 'user_name': '作者'},
-            'comments': {'user_name': '作者', 'content':'内容'},
-            'oauth': {'id': 'ID', 'user_id': '用户ID'}
+            'comments': {'user_name': '作者', 'content':'内容'}
         },
     },
     computed:{
@@ -27,9 +26,9 @@ var vm = new Vue({
 
         getItemsByPage: function  (page, size) {
             var self = this;
-            getJSON('/api/' + this.table, {
+            getJSON('/api/user/' + this.table, {
                 page: page || '1',
-                size: size || '10'
+                size: size || '5'
             }, function (err, data) {
                 self.items = data.items;
                 self.page = data.page;

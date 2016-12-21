@@ -17,15 +17,41 @@
 
             <p class="blog-post-meta">
                 <a class="blong-to-folder" style="margin-right: 50px;" href="/bootstrap/?tag={{ blog.summary }}">{{ blog.summary }}</a>
-                由<a style="border: 0; margin: 0 5px; font-size: 14px;" href="/bootstrap/userpage">{{ blog.user_name }}</a>
+                由<a style="border: 0; margin: 0 5px; font-size: 14px;" href="/bootstrap/user/blogs">{{ blog.user_name }}</a>
                 发表于<time>{{ blog.created_at|datetime }}</time>
             </p>
         </div>
         <p>{{ blog.content|marked|safe }}</p>
     </article>
-    <div class="comment" id="blog-comment">
+    <div class="blog-comment" id="blog-comment">
 
-        <h4>最新评论</h4>
+        {% if __user__ %}
+
+        <form class="form" v-on:submit.prevent="submit">
+            <div class="form-group">
+                <button class="btn btn-primary" style="display: inline;"><h4>添加评论</h4></button>
+
+                <span class="alert alert-danger" hidden="hidden" style="margin: 15px;">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <span class="sr-only">Error:</span>
+                    <span v-text="message"></span>
+                </span>
+            </div>
+            <div class="form-group col-sm-6" style="padding-left: 0;">
+                <textarea class="form-control" rows="15" id="comment" name="comment" placeholder="默认使用markdown解析内容"
+                          v-model="comment"></textarea>
+            </div>
+            <div class="col-sm-6 pre-scrollable" style="border-radius: 4px; height: 313px; box-shadow: 0 0 3px #888888;" v-html="comment|marked"></div>
+        </form>
+
+        {% endif %}
+
+        <h4 class="news-type">
+            <span>
+                <b>最新评论</b>
+            </span>
+        </h4>
+
         <ul class="media-list">
 
             <li class="media" v-for="c in comments" track-by="id" style="box-shadow: 0 0 3px #888888;">
@@ -53,28 +79,6 @@
             </li>
         </ul><!-- media-list -->
 
-        <hr class="divider"/>
-
-        {% if __user__ %}
-
-        <form class="form" v-on:submit.prevent="submit">
-            <div class="form-group">
-                <button class="btn btn-primary" style="display: inline;"><h4>添加评论</h4></button>
-
-                <span class="alert alert-danger" hidden="hidden" style="margin: 15px;">
-                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                    <span class="sr-only">Error:</span>
-                    <span v-text="message"></span>
-                </span>
-            </div>
-            <div class="form-group col-sm-6" style="padding-left: 0;">
-                <textarea class="form-control" rows="15" id="comment" name="comment" placeholder="默认使用markdown解析内容"
-                          v-model="comment"></textarea>
-            </div>
-            <div class="col-sm-6 pre-scrollable" style="border-radius: 4px; height: 313px; box-shadow: 0 0 3px #888888;" v-html="comment|marked"></div>
-        </form>
-
-        {% endif %}
     </div>
 </div>
 {% if __user__ is none %}

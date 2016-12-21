@@ -90,7 +90,8 @@ def signout(request):
 
 # 取（用户、博客、评论）表的条目
 @get('/api/{table}')
-async def api_get_items(table, *, page='1', size='10'):
+async def api_get_items(request, table, *, page='1', size='10'):
+    print(request.__user__.id)
     models = {'users': User, 'blogs': Blog, 'comments': Comment, 'oauth': Oauth}
     num = await models[table].countRows()
     page = Page(num, set_valid_value(page), set_valid_value(size, 10))
@@ -103,16 +104,32 @@ async def api_get_items(table, *, page='1', size='10'):
     return dict(page=page, items=items)
 
 
+# 取当前用户的（博客、评论）表的条目
+@get('/api/user/{table}')
+async def api_get_user_items(request, table, *, page='1', size='5'):
+    user_id = request.__user__.id
+    models = {'blogs': Blog, 'comments': Comment, 'oauth': Oauth}
+    items = await models[table].findAll(orderBy='created_at desc')
+    items = [item for item in items if item.user_id == user_id]
+    num = len(items)
+    page = Page(num, set_valid_value(page), set_valid_value(size, 5))
+    if num == 0:
+        return dict(page=page, items=[])
+    items = items[page.offset:(page.limit + page.offset)]
+    if table == 'users':
+        for user in items:
+            user.password = '******'
+    return dict(page=page, items=items)
+
 # 取某篇博客
 @get('/api/blogs/{id}')
 async def api_get_blog(id):
     return await Blog.find(id)
 
-
 # 创建新博客
 @post('/api/blogs')
 async def api_create_blog(request, *, name, summary, content):
-    check_user(request.__user__)
+    # check_user(request.__user__)
     check_string(name=name, summary=summary, content=content)
     blog = Blog(user_id=request.__user__.id, user_name=request.__user__.name, user_image=request.__user__.image,
                 name=name.strip(), summary=summary.strip(), content=content.strip())
@@ -123,7 +140,7 @@ async def api_create_blog(request, *, name, summary, content):
 # 修改某篇博客
 @post('/api/blogs/{id}')
 async def api_update_blog(id, request, *, name, summary, content):
-    check_user(request.__user__)
+    # check_user(request.__user__)
     check_string(name=name, summary=summary, content=content)
     blog = await Blog.find(id)
     blog.name = name.strip()

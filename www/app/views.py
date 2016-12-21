@@ -31,11 +31,15 @@ async def test():
         'blog': blog
     }
 
-@get('/bootstrap/userpage')
-async def homepage():
-    return {
-        '__template__': 'user-page.html'
-    }
+@get('/bootstrap/user/{table}')
+async def homepage(table):
+    if check_table(table):
+        return {
+            '__template__': 'user-page.html',
+            'table': table
+        }
+    else:
+        return 'redirect:/bootstrap/user/blogs'
 
 # 首页
 @get('/')
