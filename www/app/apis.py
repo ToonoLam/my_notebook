@@ -84,7 +84,8 @@ async def oauth2(code):
 @get('/signout')
 def signout(request):
     logging.info('user sign out')
-    return User.signout(web.HTTPFound(request.headers.get('Referer') or '/'))
+    # return User.signout(web.HTTPFound(request.headers.get('Referer') or '/'))
+    return User.signout(web.HTTPFound('/'))
 
 
 # 取（用户、博客、评论）表的条目

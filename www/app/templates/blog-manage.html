@@ -8,12 +8,12 @@
 
 {% block major_content %}
 
-<div class="manage-table" id="vm" style="">
+<div class="manage-table" id="vm">
     <div class="panel panel-default">
         <ul class="nav nav-tabs" style="background-color: #e4e4e4">
-            <li :class="{active: '{{table}}'===key}" v-for="(key, _) of models"><a :href="'' + key" v-text="key"></a></li>
+            <li :class="{active: '{{table}}'===key}" v-for="(key, _) of models" v-if="key !== 'oauth' || {{ __user__.admin }}"><a :href="'' + key" v-text="key"></a></li>
         </ul>
-        <table class="table table-striped table-hover table-responsive" id="manage-table" v-show="'{{ table }}' !== 'oauth' || {{ __user__.admin }}">
+        <table class="table table-striped table-hover table-responsive" id="manage-table">
             <thead>
                 <tr>
                     <th v-for="title of fields" v-text="title"></th>

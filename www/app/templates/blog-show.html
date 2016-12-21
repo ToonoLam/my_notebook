@@ -16,9 +16,9 @@
             <h1 class="blog-post-title">{{ blog.name }}</h1>
 
             <p class="blog-post-meta">
-                <a  style="margin-right: 50px;" href="/bootstrap/?tag={{ blog.summary }}">{{ blog.summary }}</a>
-                发表于
-                <time>{{ blog.created_at|datetime }}</time>
+                <a class="blong-to-folder" style="margin-right: 50px;" href="/bootstrap/?tag={{ blog.summary }}">{{ blog.summary }}</a>
+                由<a style="border: 0; margin: 0 5px; font-size: 14px;" href="/bootstrap/userpage">{{ blog.user_name }}</a>
+                发表于<time>{{ blog.created_at|datetime }}</time>
             </p>
         </div>
         <p>{{ blog.content|marked|safe }}</p>

@@ -143,7 +143,7 @@ ul {
     border-color: #080808;
 }
 
-.nav-bar div a {
+.nav-bar div div a {
     font-size: 16px;
     display: table-cell;
     margin: 0;
@@ -156,18 +156,18 @@ ul {
     color: #b2b2b2;
 }
 
-.nav-bar div a:hover {
+.nav-bar div div a:hover {
     background-color: #60517c;
     color: #ffffff;
 }
 
-.nav-bar .ico-home a {
+.navdrop .ico-home a {
     width: 40px;
     background: #563d7c;
     background-image: url("../img/bootstrap.png");
 }
 
-.ico-sign-out {
+.navuser {
     position: absolute;
     bottom: 0;
 }

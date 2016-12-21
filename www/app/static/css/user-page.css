@@ -1,6 +1,10 @@
 @charset "UTF-8";
 
+.
 
-.welcome {
-    background-image: none;
+.manage-table {
+    height: 540px;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
 }

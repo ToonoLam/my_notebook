@@ -92,6 +92,10 @@
 .blog-post {
     position: relative;
     padding: 5px;
+    margin-bottom: 25px;
+}
+
+.post-title {
     margin-bottom: 15px;
 }
 
@@ -105,13 +109,24 @@
     color: #000000;
 }
 
-.post-time {
-    text-align: center;
-    margin-bottom: 15px;
+.blog-post .container-fluid {
+    border-top: 1px solid #eeeeee;
 }
 
-.post-time small {
+.post-left {
+    float: left;
+    margin-bottom: 3px;
+    margin-top: 3px;
+    margin-left: 15px;
     color: #999;
+}
+
+.post-left a {
+    color: #999;
+}
+
+.post-left a:hover {
+    color: #00bf7f;
 }
 
 .post-right {

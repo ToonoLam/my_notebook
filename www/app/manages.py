@@ -27,7 +27,6 @@ def manage(template):
 def manage_table(template, table):
     if check_table(table):
         return {
-            # '__template__': '%s-manage.html' % (template),
             '__template__': 'blog-manage.html',
             'table': table
         }

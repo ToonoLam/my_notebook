@@ -30,14 +30,17 @@
     {% for blog in blogs %}
     <article class="blog-post">
         <header>
-            <h3 class="post-title text-center"><a href="/blog/{{ blog.id }}"><b>{{ blog.name }}</b></a></h3>
-            <div class="post-time"><small>发表于 {{ blog.created_at|datetime }}</small></div>
+            <h1 class="post-title text-center"><a href="/blog/{{ blog.id }}"><b>{{ blog.name }}</b></a></h1>
         </header>
         <div class="container-fluid blog-summary">
         {{ blog.content|marked|safe }}
         </div>
-        <footer class="post-permalink" style="display: block">
-
+        <p style="margin-left: 15px;"> ...... </p>
+        <footer class="post-permalink" style="display: block; margin-top: 10px;">
+            <span class="post-left">
+                由<a style="border: 0; margin: 0 5px; font-size: 14px;" href="/bootstrap/userpage">{{ blog.user_name }}</a>
+                 发表于 <time>{{ blog.created_at|datetime }}</time>
+            </span>
             <span class="post-right"><a href="/blog/{{ blog.id }}"><small>阅读更多</small></a></span>
         </footer>
 
@@ -76,7 +79,6 @@ $('.content-wrap').fadeIn();
 $('.blog-summary').each(function () {
 // 选择主页展示多少内容
     $(this).children('*:gt(7)').remove();
-    $(this).append('<p>......</p>');
 });
 
 

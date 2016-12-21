@@ -61,13 +61,14 @@
         </a>
         <ul class="dropdown-menu arrow-top">
             {% if __user__.admin %}
+
+            {% endif %}
             <li>
                 <a class="ico" href="/bootstrap/userpage">
                     <i class="fa fa-gear"></i>
                     用户配置
                 </a>
             </li>
-            {% endif %}
             <li>
                 <a href="/signout">
                     <i class="fa fa-sign-out"></i>
@@ -94,36 +95,45 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
     </button>
-    <!--主页键-->
-    <div class="ico-home">
-        <a href="/bootstrap/">
-        </a>
+    <div class="navdrop">
+        <!--主页键-->
+        <div class="ico-home">
+            <a href="/bootstrap/">
+            </a>
+        </div>
+        {% if __user__.admin %}
+        <!--博客编辑-->
+        <div class="ico-edit">
+            <a href="/bootstrap/manage/blogs/create">
+                <i class="fa fa-pencil"></i>
+            </a>
+        </div>
+        {% endif %}
+        {% if __user__ %}
+        <!--管理界面-->
+        <div class="ico-cog">
+            <a href="/bootstrap/manage">
+                <i class="fa fa-gears"></i>
+            </a>
+        </div>
+        {% endif %}
+        <!--导航栏-->
+        {% block navdrop %}
+        {% endblock %}
     </div>
-    {% if __user__.admin %}
-    <!--博客编辑-->
-    <div class="ico-edit">
-        <a href="/bootstrap/manage/blogs/create">
-            <i class="fa fa-pencil"></i>
-        </a>
+    <div class="navuser">
+        <!-- 用户栏 -->
+        {% if __user__ %}
+        <div class="ico-sign-out">
+            <a href="/signout">
+                <i class="fa fa-sign-out"></i>
+            </a>
+        </div>
+        {% endif %}
+        <!--导航栏-->
+        {% block navuser %}
+        {% endblock %}
     </div>
-    {% endif %}
-    <!-- 用户栏 -->
-    {% if __user__ %}
-    <!--管理界面-->
-    <div class="ico-cog">
-        <a href="/bootstrap/manage">
-            <i class="fa fa-gears"></i>
-        </a>
-    </div>
-    <div class="ico-sign-out">
-        <a href="/signout">
-            <i class="fa fa-sign-out"></i>
-        </a>
-    </div>
-    {% endif %}
-    <!--导航栏-->
-    {% block nav %}
-    {% endblock %}
 </div>
 <!--/导航栏-->
 <!--主页面-->
